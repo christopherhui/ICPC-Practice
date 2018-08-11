@@ -12,7 +12,7 @@ carDistExp = []
 for i in range(n):
     carDistExp.append(p * i + p)
 
-for i in range(n, 0, -1):
+for i in range(n-1, -1, -1):
     if carDistReal[i] >= carDistExp[i]:
         continue
     else:
