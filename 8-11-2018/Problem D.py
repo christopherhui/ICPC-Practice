@@ -1,17 +1,18 @@
-aList = [int(x) for x in input().split()]
+from sys import stdin, stdout
+
+aList = [int(x) for x in stdin.readline().split()]
 n = aList[0]
 p = aList[1]
-count = 1
 
-carDistReal = [int(x) for x in input().split()]
+carDistReal = [int(x) for x in stdin.readline().split()]
 carDistReal.sort()
 
-
+count = carDistReal[0]
 carDistExp = []
 for i in range(n):
     carDistExp.append(p * i + p)
 
-for i in range(n):
+for i in range(n, 0, -1):
     if carDistReal[i] >= carDistExp[i]:
         continue
     else:
@@ -19,6 +20,6 @@ for i in range(n):
         carDistReal = list(map(lambda x: x + difference, carDistReal))
         count += difference
 
-
+stdout.write(count)
 
 
