@@ -13,9 +13,9 @@ repeat = False
 while not repeat:
     for i in range(n):
         temp = None
+        famTree = tree[i]
         if famTree[0] in map:
             temp = map[famTree[0]]
-        famTree = tree[i]
         if famTree[1] in map:
             if famTree[2] in map:
                 map[famTree[0]] = (map[famTree[1]] + map[famTree[2]]) / 2
