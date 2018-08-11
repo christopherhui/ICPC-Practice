@@ -20,6 +20,6 @@ for i in range(n-1, -1, -1):
         carDistReal = list(map(lambda x: x + difference, carDistReal))
         count += difference
 
-stdout.write(count)
+print(count)
 
 
