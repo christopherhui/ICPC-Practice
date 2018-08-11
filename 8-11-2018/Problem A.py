@@ -8,9 +8,10 @@ for i in range(n):
     b = input().split()
     tree.append(b)
 
-repeat = False
+repeat = True
 
-while not repeat:
+while repeat:
+    repeat = False
     for i in range(n):
         temp = None
         famTree = tree[i]
