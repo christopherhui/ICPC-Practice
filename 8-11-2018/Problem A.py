@@ -18,3 +18,12 @@ for i in range(n):
         else:
             map[famTree[0]] = (map[famTree[2]]) / 2
             map[famTree[1]] = 0
+
+max = 0
+maxPer = ''
+for i in range(m):
+    if input() in map and map[input()] > max:
+        max = map[input()]
+        maxPer = input()
+
+print(maxPer)
