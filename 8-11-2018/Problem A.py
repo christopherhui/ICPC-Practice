@@ -3,8 +3,10 @@ n, m = aList[0], aList[1]
 map = {}
 king = input()
 map[king] = 1
+
+
 for i in range(n):
-    famTree = [int(x) for x in input().split()]
+    famTree = input().split()
     if famTree[1] in map:
         if famTree[2] in map:
             map[famTree[0]] = (map[famTree[1]] + map[famTree[2]]) / 2
@@ -22,8 +24,9 @@ for i in range(n):
 max = 0
 maxPer = ''
 for i in range(m):
-    if input() in map and map[input()] > max:
-        max = map[input()]
-        maxPer = input()
+    a = input()
+    if a in map and map[a] > max:
+        max = map[a]
+        maxPer = a
 
 print(maxPer)
