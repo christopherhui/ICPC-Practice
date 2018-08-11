@@ -12,30 +12,25 @@ repeat = False
 
 while not repeat:
     for i in range(n):
+        temp = None
+        if famTree[0] in map:
+            temp = map[famTree[0]]
         famTree = tree[i]
         if famTree[1] in map:
             if famTree[2] in map:
-                temp1 = map[famTree[1]]
-                temp2 = map[famTree[2]]
                 map[famTree[0]] = (map[famTree[1]] + map[famTree[2]]) / 2
             else:
-                temp1 = map[famTree[1]]
                 map[famTree[0]] = (map[famTree[1]]) / 2
                 map[famTree[2]] = 0
-                temp2 = map[famTree[2]]
 
         elif famTree[2] in map:
             if famTree[1] in map:
-                temp1 = map[famTree[1]]
-                temp2 = map[famTree[2]]
                 map[famTree[0]] = (map[famTree[1]] + map[famTree[2]]) / 2
             else:
-                temp2 = map[famTree[2]]
                 map[famTree[0]] = (map[famTree[2]]) / 2
                 map[famTree[1]] = 0
-                temp1 = map[famTree[1]]
 
-        if temp1 != map[famTree[0]] or temp2 != map[famTree[0]]:
+        if temp != None and temp != map[famTree[0]]:
             repeat = True
 
 max = 0
