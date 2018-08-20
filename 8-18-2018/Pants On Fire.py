@@ -1,9 +1,9 @@
 from collections import deque
 
-
-def bfs(graph, visited, start, end):
+def bfs(graph, start, end):
     queue = deque()
-    queue.append(start)
+    if start in graph:
+        queue.append(start)
     visited[start] = True
     while queue:
         x = queue.pop()
@@ -15,34 +15,12 @@ def bfs(graph, visited, start, end):
                 visited[y] = True
     return False
 
-'''
-graph = {'Americans': ['Mexicans', 'Canadians'],
-         'Mexicans': ['Russians'],
-         'German': ['NorthKoreans'],
-         'Canadians': [],
-         'Russians': [],
-         'NorthKoreans': []}
-
-visited = {'Americans': False,
-           'Mexicans': False,
-           'Canadians': False,
-           'Russians': False,
-           'German': False,
-           'NorthKoreans': False}
-'''
-# graph = {'stuff': ['stuff']}
-
-# start = 'Russians'
-# end = 'Americans'
-
-# start with parsing n and m
 aList = [int(x) for x in input().split()]
 n = aList[0]
 m = aList[1]
 graph = {}
 visited = {}
 
-# creation of graph and visited dict.
 for _ in range(n):
     statement = input().split()
     worseCountry = statement[0]
@@ -62,4 +40,15 @@ for _ in range(m):
     someList = input().split()
     start = someList[len(someList) - 1]
     end = someList[0]
-    print(bfs(graph, visited, start, end))
+    temp1 = visited.copy()
+    temp2 = visited.copy()
+    a = bfs(graph, start, end)
+    visited = temp1
+    b = bfs(graph, end, start)
+    visited = temp2
+    if a:
+         print("Fact")
+    elif b:
+         print("Alternative Fact")
+    else:
+         print("Pants on Fire")
