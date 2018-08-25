@@ -20,13 +20,30 @@ def find_closest(str, list):
 for c, substring in enumerate(string, 0):
     newString = substring
     if '-' in newString:
-        bulbul = newString.split()
+        bulbul = newString.split('-')
+        hardlet = -1
         for d, val in enumerate(bulbul, 0):
-            if d == 0:
-                if val[0] not in hardconsonants:
-                    newString = find_closest(substring[0], hardconsonants) + val[1:]
-                    hardlet = ord(chr(find_closest(substring[0], hardconsonants)) + 32)
-            elif
+            newnewString = val
+            if d == 0 and c == 0:
+                if newnewString[0] not in hardconsonants:
+                    z = find_closest(val[0], hardconsonants)
+                    newnewString = z + newnewString[1:]
+                    hardlet = z.lower()
+                else:
+                    hardlet = newnewString[0]
+            elif d == 0:
+                if newnewString[0] not in softconsonants:
+                    z = find_closest(val[0], softconsonants)
+                    newnewString = z + newnewString[1:]
+                    hardlet = z.lower()
+                else:
+                    hardlet = newnewString[0]
+            elif newnewString[0] in softconsonants and hardlet != -1:
+                newnewString = hardlet + newnewString[1:]
+            if newnewString[len(val) - 1] in hardconsonants:
+                newnewString = newnewString[len(val) - 1] + find_closest(newnewString[len(val) - 1], vowels) + 'h'
+        bulbul[d] = newnewString
+        string[c] = ''.join(bulbul)
 
     else:
         if c == 0:
