@@ -55,4 +55,14 @@ for c, substring in enumerate(string, 0):
             newString = newString[:len(substring)] + find_closest(newString[len(substring) - 1], vowels) + 'h'
         string[c] = newString
 
-print(' '.join(string))
+a = ' '.join(string)
+has_n = False
+for c, i in enumerate(a, 0):
+    if i == 'n':
+        has_n = True
+    elif i == 'g' and has_n == True:
+        a = a[:c - 1] + 'c' + 'c' + a[c + 1:]
+    else:
+        has_n = False
+
+print(a)
