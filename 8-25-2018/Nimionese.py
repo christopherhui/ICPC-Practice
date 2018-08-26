@@ -46,10 +46,9 @@ for c, substring in enumerate(string, 0):
         string[c] = ''.join(bulbul)
 
     else:
-        if c == 0:
-            if newString[0] not in hardconsonants:
-                newString = find_closest(substring[0], hardconsonants) + substring[1:]
-        elif newString[0] not in softconsonants:
+        if 'A' <= newString[0] <= 'Z' and newString[0] not in hardconsonants:
+            newString = find_closest(substring[0], hardconsonants) + substring[1:]
+        elif 'a' <= newString[0] <= 'z' and newString[0] not in softconsonants:
             newString = find_closest(substring[0], softconsonants) + substring[1:]
         if newString[len(substring) - 1] in hardconsonants or newString[len(substring) - 1] in softconsonants:
             newString = newString[:len(substring)] + find_closest(newString[len(substring) - 1], vowels) + 'h'
@@ -66,3 +65,25 @@ for c, i in enumerate(a, 0):
         has_n = False
 
 print(a)
+'''
+#!/usr/bin/env python
+import re
+
+hard = "bcdgknpt"
+soft = "aou"
+
+def closest(c, l, up=True):
+    return min(map(lambda i: (abs(ord(c.lower())-ord(i)), i if c == c.lower() or not up else i.upper()), l))[1]
+
+def solve(word):
+    global hard
+    global soft
+
+    syllables = word.split('-')
+    syllables[0] = re.sub("^[^" + hard + "]", lambda c: closest(c.group(), hard), syllables[0], flags=re.IGNORECASE)
+    syllables[1:] = map(lambda s: re.sub("[" + hard + "]", syllables[0][0].lower(), s, flags=re.IGNORECASE), syllables[1:])
+    syllables[-1] = re.sub("[" + hard + "]$", lambda c: c.group() + closest(c.group(), soft,up=False) + 'h', syllables[-1], flags=re.IGNORECASE)
+    return ''.join(syllables)
+
+print(' '.join(map(solve, input().split(' '))))
+'''
