@@ -3,9 +3,10 @@ import math
 aList = [int(x) for x in input().split()]
 n, s = aList[0], aList[1]
 coins = [int(x) for x in input().split()]
-for i in range(1, len(coins)):
+for i in range(1, n):
     coins[i] = coins[i - 1] * coins[i]
 coins = [1] + coins
+print(coins)
 
 dp = [0] * s
 for a in range(s):
