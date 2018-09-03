@@ -3,11 +3,10 @@ k, n = aList[0], aList[1]
 bList = [int(x) for x in input().split()]
 aMap = {}
 cList = []
+for x in range(1, k+1):
+    aMap[x] = 0
 for i in bList:
-    if i not in aMap:
-        aMap[i] = 1
-    else:
-        aMap[i] += 1
+    aMap[i] += 1
     if i in cList:
         cList.pop(cList.index(i))
     else:
@@ -30,4 +29,18 @@ elif len(cList) == 1:
     else:
         print('*')
 else:
-    print('*')
+    count = 0
+    found = -1
+    reprint = True
+    for y in range(1, k+1):
+        if aMap[y] == 0 and count == 0:
+            count += 1
+            found = y
+        elif aMap[y] == 0 and count >= 1:
+            print('*')
+            reprint = False
+            break
+    if found == sum(range(k+1))- sum(bList):
+        print('+'+ str(found))
+    else:
+        print('*')
