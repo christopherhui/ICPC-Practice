@@ -18,7 +18,21 @@ if len(cList) == 2:
     elif aMap[cList[0]] < aMap[cList[1]]:
         print('-'+ str(cList[1]), '+'+ str(cList[0]))
     else:
-        print('*')
+        count = 0
+        found = -1
+        reprint = True
+        for y in range(1, k+1):
+            if aMap[y] == 0 and count == 0:
+                count += 1
+                found = y
+            elif aMap[y] == 0 and count >= 1:
+                print('*')
+                reprint = False
+                break
+        if found == sum(range(k+1))- sum(bList):
+            print('+'+ str(found))
+        else:
+            print('*')
 elif len(cList) == 1:
     if len(aMap) == 1:
         print('-'+ str(cList[0]))
@@ -27,7 +41,21 @@ elif len(cList) == 1:
     elif aMap[cList[0]] == max(aMap):
         print('-'+ str(cList[0]))
     else:
-        print('*')
+        count = 0
+        found = -1
+        reprint = True
+        for y in range(1, k+1):
+            if aMap[y] == 0 and count == 0:
+                count += 1
+                found = y
+            elif aMap[y] == 0 and count >= 1:
+                print('*')
+                reprint = False
+                break
+        if found == sum(range(k+1))- sum(bList):
+            print('+'+ str(found))
+        else:
+            print('*')
 else:
     count = 0
     found = -1
