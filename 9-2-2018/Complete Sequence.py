@@ -1,10 +1,13 @@
-from collections import Counter
-
 aList = [int(x) for x in input().split()]
 k, n = aList[0], aList[1]
 data = [int(x) for x in input().split()]
 
-counts = Counter(data)
+counts = {}
+for i in range(1, k+1):
+    counts[i] = 0
+for i in data:
+    counts[i] += 1
+
 countsofcounts = {}
 for num, count in counts.items():
     if count not in countsofcounts:
@@ -22,12 +25,13 @@ for num, count in counts.items():
             add = "+" + str(num)
         else:
             sub = "-" + str(num)
-        counter += 1
+        counter += abs(count - target)
 
-if counter > 3:
+if counter >= 3:
     print("*")
 elif counter == 2:
-    print(sub, add)
+    if sub != '' or add != '':
+        print(sub, add)
 elif counter == 1:
     if add == '':
         print(sub)
