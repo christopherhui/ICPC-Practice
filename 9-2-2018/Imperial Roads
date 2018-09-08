@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main() {
+  ios::sync_with_stdio(0);
+	cin.tie(0); 
+  cout.tie(0);
+
+  ll n, r;
+  cin >> n >> r;
+  ll graph[n][n];
+  for (int i = 0; i < sizeof(graph)/sizeof(graph[0]); i++) {
+    for (int j = 0; j < sizeof(graph)/sizeof(graph[0]); j++) {
+      graph[i][j] = 0;
+    }
+  }
+
+  while (r--) {
+    ll a, b, c;
+    cin >> a >> b >> c;
+    graph[a-1][b-1] = c;
+    graph[b-1][a-1] = c;
+  }
+  ll q; 
+  cin >> q;
+
+  while (q--) {
+    ll u, v;
+    cin >> u >> v;
+
+    ll parent[n];
+    
+  }
+  
+  return 0;
+}
