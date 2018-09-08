@@ -4,7 +4,7 @@ typedef long long ll;
 
 int main() {
   ios::sync_with_stdio(0);
-	cin.tie(0); 
+  cin.tie(0); 
   cout.tie(0);
 
   ll n, r;
@@ -26,11 +26,45 @@ int main() {
   cin >> q;
 
   while (q--) {
-    ll u, v;
-    cin >> u >> v;
+    ll x, y;
+    cin >> x >> y;
+	ll sum = graph[x-1][y-1];
 
-    ll parent[n];
-    
+	ll parent[n]; 
+    ll key[n];   
+    bool mstSet[n];  
+ 
+    for (int i = 0; i < n; i++) {
+       key[i] = INT_MAX, mstSet[i] = false;
+	}
+	
+    key[x] = 0;
+	key[y] = 0;
+    parent[x] = -1;
+	parent[y] = -1;
+ 
+    for (int count = 0; count < n-1; count++)
+    {
+        ll min = INT_MAX, min_index;
+ 
+		for (int v = 0; v < n; v++) {
+			if (mstSet[v] == false && key[v] < min) {
+				min = key[v], min_index = v;
+			}
+		}
+		ll u = min;
+ 
+        mstSet[u] = true;
+ 
+        for (int v = 0; v < n; v++) {
+ 
+			if (graph[u][v] && mstSet[v] == false && graph[u][v] <  key[v]) {
+				parent[v] = u, key[v] = graph[u][v];
+				sum += u;
+			}
+		}
+    }
+	cout << sum << endl;
   }
   
   return 0;
