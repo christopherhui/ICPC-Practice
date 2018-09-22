@@ -11,9 +11,9 @@ def printFraction(num):
     if num == 0:
         return
     else:
-        length = len(str(num)) - 2
-        numer = int(num * 10 ** length)
-        denom = 10 ** length
+        a = num.as_integer_ratio()
+        numer = a[0]
+        denom = a[1]
         if denom % numer == 0:
             print(int(denom / numer), end=' ')
             print()
