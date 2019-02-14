@@ -12,7 +12,7 @@ for i in range(t):
 aList.sort(key=thing)
 for i in aList:
     tuple = i[0]
-    for j in range(tuple[0], tuple[1]+1):
+    for j in range(tuple[1], tuple[0]-1, -1):
         if j not in usedList:
             cList.append((j, i[2]))
             usedList.append(j)
