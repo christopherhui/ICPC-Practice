@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int find(int val) {
+  int i = 1;
+  while (val != 0) {
+    i *= val % 10;
+    val /= 10;
+  }
+  return i;
+}
+
+int main() {
+  ios::sync_with_stdio(0);
+  cin.tie(0);
+  cout.tie(0);
+
+  int n; cin >> n; int largest = 0;
+  for (int i = 0; i < n+1; i++) {
+    largest = max(largest, find(i));
+  }
+  cout << largest;
+
+  return 0;
+}
