@@ -17,5 +17,5 @@ int main() {
     else if(even) cout << 0 << endl;
     else cout << 1 << endl;
  
-  return 0;
+    return 0;
 }
